@@ -21,6 +21,24 @@ However, 'LANG1' and 'LANG2' are fully-functioning candidates for 'kana' and 'ei
 As such, those are in use within the default layer at this time.*/
 
 / {
+      macros {
+        zed_em_kay: zed_em_kay {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_tap &kp N1 &kp N9 &kp N2 &kp PERIOD &kp N1 &kp N6 &kp N8 &kp PERIOD &kp N1 &kp PERIOD >
+                  ;
+              };
+        ip_local: zed_em_kay {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_press &kp LSHFT>
+                  , <&macro_tap &kp Z &kp M &kp K>
+                  , <&macro_release &kp LSHFT>
+                  ;
+              };
+       }; 
        keymap {
               compatible = "zmk,keymap";
 
@@ -32,11 +50,11 @@ As such, those are in use within the default layer at this time.*/
  // |  SHIFT |   Z    |   X    |   C    |   V    |   B    |  LBKT  |                    |  RBKT  |   N    |   M    |   ,    |   .    |   /    |  RET   |
  // | ADJUST |  ESC   |  ALT   |  LGUI  | EISUU  | LOWER  | SPACE  |                    |  SPACE | RAISE  |  KANA  |  LEFT  |  DOWN  |  UP    |  RIGHT |
                      bindings = <
-       &kp GRAVE  &kp N1  &kp N2   &kp N3   &kp N4    &kp N5                               &kp N6    &kp N7    &kp N8    &kp N9     &kp N0    &kp DEL
-       &kp TAB    &kp Q   &kp W    &kp E    &kp R     &kp T                                &kp Y     &kp U     &kp I     &kp O      &kp P     &kp BSPC
-       &kp LCTRL  &kp A   &kp S    &kp D    &kp F     &kp G                                &kp H     &kp J     &kp K     &kp L      &kp SEMI  &kp SQT
-       &kp LSHFT  &kp Z   &kp X    &kp C    &kp V     &kp B     &kp LBKT         &kp RBKT  &kp N     &kp M     &kp COMMA &kp PERIOD &kp SLASH &kp RET
-       &mo ADJUST &kp ESC &kp LALT &kp LGUI &kp LANG2 &mo LOWER &kp SPACE        &kp SPACE &mo RAISE &kp KP_NUMLOCK &kp LEFT  &kp DOWN   &kp UP    &kp RIGHT
+       &kp GRAVE  &kp N1  &kp N2   &kp N3   &kp N4    &kp N5                                 &kp C_SLEEP   &kp N7         &kp N8   &kp N9    &kp &zed_em_kay   &ip_local
+       &kp TAB    &kp Q   &kp W    &kp E    &kp R     &kp T                                  &kp C_AL_CALC &kp MINUS      &kp PLUS &kp EQUAL &kp BSPC &kp RET
+       &kp LCTRL  &kp A   &kp S    &kp D    &kp F     &kp G                                  &kp C_VOL_UP  &kp ASTRK      &kp N9   &kp N6    &kp N3   &kp PERIOD
+       &kp LSHFT  &kp Z   &kp X    &kp C    &kp V     &kp B     &kp LBKT         &kp C_NEXT  &kp C_VOL_DN  &kp SLASH      &kp N8   &kp N5    &kp N2   &kp N0
+       &mo ADJUST &kp ESC &kp LALT &kp LGUI &kp LANG2 &mo LOWER &kp SPACE        &kp C_PP    &kp C_MUTE    &kp KP_NUMLOCK &kp N7   &kp N4    &kp N1   &mo ADJUST
                      >;
               };
               lower_layer {
@@ -78,10 +96,10 @@ As such, those are in use within the default layer at this time.*/
  // |          |          |          |          |          |          |          |                    |          |          |          |          |          |          |          |
                      bindings = <
        &kp GRAVE  &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT                             &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR        &ext_power EP_TOG
-       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI &rgb_ug RGB_BRI &rgb_ug RGB_TOG
-       &bt BT_NXT &out OUT_TOG &out OUT_USB &out OUT_BLE &trans       &trans                                &rgb_ug RGB_EFR &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD &rgb_ug RGB_BRD &trans
-       &bt BT_PRV &trans       &trans       &trans       &trans       &trans       &kp LBRC        &kp RBRC &trans          &trans          &trans          &trans          &trans          &trans
-       &trans     &trans       &trans       &trans       &trans       &trans       &trans          &trans   &trans          &trans          &trans          &trans          &trans          &trans
+       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &rgb_ug RGB_EFF &out OUT_USB &out OUT_BLE &rgb_ug RGB_SPI &bt BT_CLR &rgb_ug RGB_TOG
+       &bt BT_NXT &out OUT_TOG &out OUT_USB &out OUT_BLE &trans       &trans                                &rgb_ug RGB_EFR &out OUT_TOG &rgb_ug RGB_SAD &rgb_ug RGB_SPD &bt BT_SEL 3 RGB_BRD &trans
+       &bt BT_PRV &trans       &trans       &trans       &trans       &trans       &kp LBRC        &kp RBRC &trans          &bt BT_NXT          &trans          &trans          &bt BT_SEL 2          &bt BT_SEL 0
+       &trans     &trans       &trans       &trans       &trans       &trans       &trans          &trans   &trans          &bt BT_PRV          &trans          &bt BT_SEL 4          &bt BT_SEL 1          &trans
                      >;
               };
        };
