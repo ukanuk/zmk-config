@@ -26,16 +26,16 @@ As such, those are in use within the default layer at this time.*/
               compatible = "zmk,behavior-macro";
               #binding-cells = <0>;
               bindings
-                  = <&macro_tap &kp N1 &kp N9 &kp N2 &kp PERIOD &kp N1 &kp N6 &kp N8 &kp PERIOD &kp N1 &kp PERIOD >
+                  = <&macro_press &kp LSHFT>
+                  , <&macro_tap &kp Z &kp M &kp K>
+                  , <&macro_release &kp LSHFT>
                   ;
               };
         ip_local: ip_local {
               compatible = "zmk,behavior-macro";
               #binding-cells = <0>;
               bindings
-                  = <&macro_press &kp LSHFT>
-                  , <&macro_tap &kp Z &kp M &kp K>
-                  , <&macro_release &kp LSHFT>
+                  = <&macro_tap &kp N1 &kp N9 &kp N2 &kp PERIOD &kp N1 &kp N6 &kp N8 &kp PERIOD &kp N1 &kp PERIOD >
                   ;
               };
        }; 
@@ -50,7 +50,7 @@ As such, those are in use within the default layer at this time.*/
  // |  SHIFT |   Z    |   X    |   C    |   V    |   B    |  LBKT  |                    |  RBKT  |   N    |   M    |   ,    |   .    |   /    |  RET   |
  // | ADJUST |  ESC   |  ALT   |  LGUI  | EISUU  | LOWER  | SPACE  |                    |  SPACE | RAISE  |  KANA  |  LEFT  |  DOWN  |  UP    |  RIGHT |
                      bindings = <
-       &kp GRAVE  &kp N1  &kp N2   &kp N3   &kp N4    &kp N5                                 &kp C_SLEEP   &kp N7         &kp N8   &kp N9    &kp &zed_em_kay   &ip_local
+       &kp GRAVE  &kp N1  &kp N2   &kp N3   &kp N4    &kp N5                                 &kp C_SLEEP   &kp N7         &kp N8   &kp N9    &kp N0   &kp N0
        &kp TAB    &kp Q   &kp W    &kp E    &kp R     &kp T                                  &kp C_AL_CALC &kp MINUS      &kp PLUS &kp EQUAL &kp BSPC &kp RET
        &kp LCTRL  &kp A   &kp S    &kp D    &kp F     &kp G                                  &kp C_VOL_UP  &kp ASTRK      &kp N9   &kp N6    &kp N3   &kp PERIOD
        &kp LSHFT  &kp Z   &kp X    &kp C    &kp V     &kp B     &kp LBKT         &kp C_NEXT  &kp C_VOL_DN  &kp SLASH      &kp N8   &kp N5    &kp N2   &kp N0
