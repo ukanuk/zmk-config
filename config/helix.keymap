@@ -21,24 +21,6 @@ However, 'LANG1' and 'LANG2' are fully-functioning candidates for 'kana' and 'ei
 As such, those are in use within the default layer at this time.*/
 
 / {
-      macros {
-        zed_em_kay: zed_em_kay {
-              compatible = "zmk,behavior-macro";
-              #binding-cells = <0>;
-              bindings
-                  = <&macro_press &kp LSHFT>
-                  , <&macro_tap &kp Z &kp M &kp K>
-                  , <&macro_release &kp LSHFT>
-                  ;
-              };
-        ip_local: ip_local {
-              compatible = "zmk,behavior-macro";
-              #binding-cells = <0>;
-              bindings
-                  = <&macro_tap &kp N1 &kp N9 &kp N2 &kp PERIOD &kp N1 &kp N6 &kp N8 &kp PERIOD &kp N1 &kp PERIOD >
-                  ;
-              };
-       }; 
        keymap {
               compatible = "zmk,keymap";
 
@@ -95,11 +77,11 @@ As such, those are in use within the default layer at this time.*/
  // |  BT PRV  |          |          |          |          |          |    {     |                    |    }     |          |          |          |          |          |          |
  // |          |          |          |          |          |          |          |                    |          |          |          |          |          |          |          |
                      bindings = <
-       &kp GRAVE  &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT                             &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR        &ext_power EP_TOG
-       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &rgb_ug RGB_EFF &out OUT_USB &out OUT_BLE &rgb_ug RGB_SPI &bt BT_CLR &rgb_ug RGB_TOG
-       &bt BT_NXT &out OUT_TOG &out OUT_USB &out OUT_BLE &trans       &trans                                &rgb_ug RGB_EFR &out OUT_TOG &rgb_ug RGB_SAD &rgb_ug RGB_SPD &bt BT_SEL 3 RGB_BRD &trans
-       &bt BT_PRV &trans       &trans       &trans       &trans       &trans       &kp LBRC        &kp RBRC &trans          &bt BT_NXT          &trans          &trans          &bt BT_SEL 2          &bt BT_SEL 0
-       &trans     &trans       &trans       &trans       &trans       &trans       &trans          &trans   &trans          &bt BT_PRV          &trans          &bt BT_SEL 4          &bt BT_SEL 1          &trans
+       &kp GRAVE  &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT                             &kp CARET       &kp AMPS     &kp ASTRK       &kp LPAR        &kp RPAR     &ext_power EP_TOG
+       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &rgb_ug RGB_EFF &out OUT_USB &out OUT_BLE    &rgb_ug RGB_SPI &bt BT_CLR   &rgb_ug RGB_TOG
+       &bt BT_NXT &out OUT_TOG &out OUT_USB &out OUT_BLE &trans       &trans                                &rgb_ug RGB_EFR &out OUT_TOG &rgb_ug RGB_SAD &rgb_ug RGB_SPD &bt BT_SEL 3 &trans
+       &bt BT_PRV &trans       &trans       &trans       &trans       &trans       &kp LBRC        &kp RBRC &trans          &bt BT_NXT   &trans          &trans          &bt BT_SEL 2 &bt BT_SEL 0
+       &trans     &trans       &trans       &trans       &trans       &trans       &trans          &trans   &trans          &bt BT_PRV   &trans          &bt BT_SEL 4    &bt BT_SEL 1 &trans
                      >;
               };
        };
